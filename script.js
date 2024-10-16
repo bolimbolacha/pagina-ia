@@ -1,43 +1,103 @@
 const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAltermativas = document.querySelector(".caixa-alternativas");
+const caixaPergunta = document.querySelector(".caixa-pergunta");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultados = document.querySelector(".caixa-resultados");
 const textoResultados = document.querySelector(".texto-resultados");
 
 const perguntas = [
     {
-        enunciado: "quantas copas do mundo o brasil ja ganhou no campo e futsal?",
+        enunciado: "Qual foi o campeão da copa do mundo de 2010?",
         alternativas: [
-        "11",
-        "12"
+            {
+                testo:"Espanha!",
+                afirmacao:"afirmação"
+            },
+            {
+                texto:"Alemanha!",
+                afirmacao:"afirmação."
+                
+
+            }
+        
         ]
 
     },
     {
-        enunciado: "quntas copas do mundo o brasil tem em campo",
+        enunciado: "Qual a seleção que mais tem copas do mundo?",
         alternativas: [
-        "5",
-        "6"
+            {
+                testo:"Brasil.",
+                afirmacao:"afirmação"
+            },
+            {
+                texto:"Argentina.",
+                afirmacao:"afirmação."
+                
+
+            }
+        
         ]
 
     },
     {
-        enunciado: "quantas copas do mundo o brasil tem no futsal",
+        enunciado: "qual foi a ultima seleção campeam do mundo.",
         alternativas: [
-        "5",
-        "6"
+            {
+                testo:"França.",
+                afirmacao:"afirmação"
+            },
+            {
+                texto:"Argentina.",
+                afirmacao:"afirmação."
+                
+
+            }
+        
+    
         ]
 
 
     },
     {
-        enunciado: "quantos mundiais o palmeiras possui?",
+        enunciado: "quem foi a primeira campeam do mundo?",
         alternativas: [
-        "1",
-        "0"
+            {
+                testo:"Italia.",
+                afirmacao:"afirmação"
+            },
+            {
+                texto:"uruguai.",
+                afirmacao:"afirmação"
+                
+
+            }
+        
+        
         ]
 
     }
 
 ];
 
+let atual = 0;
+let perguntaAtual; 
+
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual]
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click",function(){
+            atual++;
+            mostraPergunta();
+        });
+        caixaAltermativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta();
