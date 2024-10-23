@@ -1,19 +1,19 @@
 const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPergunta = document.querySelector(".caixa-pergunta");
+const caixaPerguntas = document.querySelector(".caixa-pergunta");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultados = document.querySelector(".caixa-resultados");
 const textoResultados = document.querySelector(".texto-resultados");
 
 const perguntas = [
     {
-        enunciado: "Qual foi o campeão da copa do mundo de 2010?",
+        enunciado: "quem e considerado o pai da fisica?",
         alternativas: [
             {
-                testo:"Espanha!",
+                texto:"newton",
                 afirmacao:"afirmação"
             },
             {
-                texto:"Alemanha!",
+                texto:"einstein",
                 afirmacao:"afirmação."
                 
 
@@ -23,14 +23,14 @@ const perguntas = [
 
     },
     {
-        enunciado: "Qual a seleção que mais tem copas do mundo?",
+        enunciado: "quem criou o prisma de luz?",
         alternativas: [
             {
-                testo:"Brasil.",
+                texto:"aristoteles.",
                 afirmacao:"afirmação"
             },
             {
-                texto:"Argentina.",
+                texto:"newton.",
                 afirmacao:"afirmação."
                 
 
@@ -40,14 +40,14 @@ const perguntas = [
 
     },
     {
-        enunciado: "qual foi a ultima seleção campeam do mundo.",
+        enunciado: "quem foi newton?",
         alternativas: [
             {
-                testo:"França.",
+                texto:"matematico",
                 afirmacao:"afirmação"
             },
             {
-                texto:"Argentina.",
+                texto:"filosofo",
                 afirmacao:"afirmação."
                 
 
@@ -59,14 +59,14 @@ const perguntas = [
 
     },
     {
-        enunciado: "quem foi a primeira campeam do mundo?",
+        enunciado: "oque fez com que oppenhimer fosse julgado?",
         alternativas: [
             {
-                testo:"Italia.",
+                texto:"criação da bomba nuclear.",
                 afirmacao:"afirmação"
             },
             {
-                texto:"uruguai.",
+                texto:"criação das armas belicas.",
                 afirmacao:"afirmação"
                 
 
@@ -75,16 +75,27 @@ const perguntas = [
         
         ]
 
-    }
+    },
+    {
+        enunciado: "A Física permite-nos conhecer as leis gerais da Natureza que regulam o desenvolvimento dos processos que se verificam, tanto no Universo circundante como no Universo em geral.",
+        
+
+    },
 
 ];
 
 let atual = 0;
-let perguntaAtual; 
+let perguntaAtual;
+let hitoriaFinal = "";
 
 function mostraPergunta() {
-    perguntaAtual = perguntas[atual]
+    if(atual >= perguntas.length){
+        motraReultados();
+        return;
+    }[]
+    perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
 
@@ -92,12 +103,21 @@ function mostraAlternativas(){
     for(const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click",function(){
-            atual++;
-            mostraPergunta();
-        });
-        caixaAltermativas.appendChild(botaoAlternativas);
+        botaoAlternativas.addEventListener("click",() => repostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
 
+function repostaSelecionada(opcaoSelecionada){
+    atual++;
+    mostraPergunta();
+    const afirmacoes = opcaoSelecionada.afirmacoes
+}
+
+function mostraResultados(){
+    caixaPerguntas.textContent = "em 2019...";
+    textoResultados.textContent = hitoriaFinal += afirmacoes + "";
+    caixaAlternativas.textContent = "";
+
+}
 mostraPergunta();
